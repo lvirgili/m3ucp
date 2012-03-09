@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+## m3ucp
+##
+## Very simple function that copies the files in a m3u playlist to a
+## directory.
+##
+## Usage exemple: m3ucp playlist.m3u /foo/bar
+## This copies the music files listed in the file 'playlist.m3u' to
+## the '/foo/bar' directory.
+
+usage() {
+    echo "Usage: m3ucp playlist.m3u /path/to/dir"
+}
+
+m3ucp() {
+    file_list=`grep -v '#' $1`
+    IFS=$'\n'
+    for file in $file_list
+    do
+        cp $file $2
+    done
+    unset IFS
+}
+
+
+if [ -z "$1" ] || [ -z "$2" ]
+then
+    usage
+    exit
+fi
+
+m3ucp $1 $2

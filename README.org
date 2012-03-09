@@ -1,0 +1,6 @@
+* m3ucp
+  This is a very simple bash function that copies the music files in a
+  m3u playlist to a directory.
+
+** Usage
+   m3ucp playlist.m3u /path/to/dir
